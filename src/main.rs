@@ -1,3 +1,5 @@
+mod models;
+use crate::models::*;
 fn main() {
-    println!("Hello, world!");
+    let x = Epic::new(String::from("foo"), String::from("bar"));
 }
