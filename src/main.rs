@@ -1,5 +1,6 @@
-mod models;
 mod db;
+mod models;
+mod ui;
 
 use crate::models::*;
 

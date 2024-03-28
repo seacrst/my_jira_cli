@@ -4,13 +4,13 @@ use anyhow::{anyhow, Ok, Result};
 
 use crate::models::*;
 
-trait Database {
+pub trait Database {
   fn read(&self) -> Result<DbState>;
   fn write(&self, state: &DbState) -> Result<()>;
 }
 
 pub struct JiraDatabase {
-  database: Box<dyn Database>
+  pub database: Box<dyn Database>
 }
 
 impl JiraDatabase {
@@ -143,12 +143,12 @@ pub mod test_utils {
   use super::*;
   
   pub struct MockDB {
-      last_written_state: RefCell<DbState>
+     pub last_written_state: RefCell<DbState>
   }
 
   impl MockDB {
       pub fn new() -> Self {
-          Self { last_written_state: RefCell::new(DbState { last_item_id: 0, epics: HashMap::new(), stories: HashMap::new() }) }
+        Self { last_written_state: RefCell::new(DbState { last_item_id: 0, epics: HashMap::new(), stories: HashMap::new() }) }
       }    
   }
 
