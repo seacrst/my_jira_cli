@@ -13,6 +13,7 @@ use crate::ui::get_column_string;
 pub trait Page {
   fn draw_page(&self) -> Result<()>;
   fn handle_input(&self, input: &str) -> Result<Option<Action>>;
+  fn as_any(&self) -> &dyn std::any::Any;
 }
 
 pub struct HomePage {
@@ -57,6 +58,10 @@ impl Page for HomePage {
         Ok(None)
       }
     }
+  }
+
+  fn as_any(&self) -> &dyn std::any::Any {
+      self
   }
 }
 pub struct EpicDetail {
@@ -119,6 +124,10 @@ impl Page for EpicDetail {
       }
     }
   }
+
+  fn as_any(&self) -> &dyn std::any::Any {
+      self
+  }
 }
 
 pub struct StoryDetail {
@@ -161,6 +170,10 @@ impl Page for StoryDetail {
         Ok(None)
       }
     }
+  }
+
+  fn as_any(&self) -> &dyn std::any::Any {
+      self
   }
 }
 
